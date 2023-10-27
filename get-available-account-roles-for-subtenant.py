@@ -17,7 +17,7 @@ headers = {
 response = requests.get(url, headers=headers, verify=False)
 data = response.json()
 
-subtenantRolesQuery = parse("$.roles[?(@.scope[*] = 'Account' & @.roleType = 'account')]")       # only retrieve subtenant roles
+subtenantRolesQuery = parse("$.roles[?(@.scope[*] = 'Account' & @.roleType = 'account')]")       # only retrieve subtenant tenant roles
 subtenantRoles = [match.value for match in subtenantRolesQuery.find(data)]
 
 print(json.dumps(subtenantRoles, indent=2))
